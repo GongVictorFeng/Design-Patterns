@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd87be46-b593-4626-96b8-d7aaade57b35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../design-principles-single-responsibility/design-principles-single-responsibility.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../design-principles-single-responsibility/src/UserController.java" afterDir="false" />
+    <list default="true" id="fd87be46-b593-4626-96b8-d7aaade57b35" name="Changes" comment="created a main class to test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +42,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
@@ -69,11 +60,51 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1750385493704</updated>
-      <workItem from="1750385494631" duration="1728000" />
+      <workItem from="1750385494631" duration="2804000" />
     </task>
+    <task id="LOCAL-00001" summary="created the started point of the project.">
+      <option name="closed" value="true" />
+      <created>1750387478095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1750387478095</updated>
+    </task>
+    <task id="LOCAL-00002" summary="created a user class">
+      <option name="closed" value="true" />
+      <created>1750387518844</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1750387518844</updated>
+    </task>
+    <task id="LOCAL-00003" summary="created a user controller">
+      <option name="closed" value="true" />
+      <created>1750387530854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750387530854</updated>
+    </task>
+    <task id="LOCAL-00004" summary="created a main class to test">
+      <option name="closed" value="true" />
+      <created>1750387549489</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1750387549489</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="created the started point of the project." />
+    <MESSAGE value="created a user class" />
+    <MESSAGE value="created a user controller" />
+    <MESSAGE value="created a main class to test" />
+    <option name="LAST_COMMIT_MESSAGE" value="created a main class to test" />
   </component>
 </project>
