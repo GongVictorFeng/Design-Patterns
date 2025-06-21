@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.IOException;
+
 /**
  * Hello world!
  *
@@ -11,7 +13,7 @@ public class App
 
     //Invalid USER JSON String - email format wrong
     private static final String INVALID_USER_JSON = "{\"name\": \"Sam\", \"email\": \"sam@email\", \"address\":\"111 Sugar lane\"}";
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
         UserController controller = new UserController();
         //Check with valid JSON
