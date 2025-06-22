@@ -44,3 +44,16 @@
     * https://github.com/GongVictorFeng/Design-Patterns/commit/0bb60b2b0a2b57d092a97a45754469518173e3ee
   * Both PhoneSubscriber and ISPSubscriber extends from base class to reuse the code and override the method calculateBill
     * https://github.com/GongVictorFeng/Design-Patterns/commit/e33c44fc2145a1f044c764de331668f91ee01c72
+
+### Liskov Substitution Principle
+* We should be able to substitute base class object with child class object and this should not alter behavior or characteristics of program
+* Hands-on:
+  * Since Square is a rectangle, so it extends from Rectangle.
+  * To keep square a square, whenever the width is set, the height should also be set to the same number, vise versa.
+  * https://github.com/GongVictorFeng/Design-Patterns/commit/5abe24f5179c9b75ddb4f6bf5940db469503250a
+  * Square failed in the test case: https://github.com/GongVictorFeng/Design-Patterns/commit/d497a4a9157c08990cad606f7816aad6a6f4a2ef
+    * Square modified the behavior of its base class - Rectangle, which violated the liskov principle
+  * Created an interface - Shape, then both Rectangle and Square implement it and override the computeArea method
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/7d5185a2cacfd4eec7b85e4bda3050c608515e40
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/f4e6b0c3d9b2e1836e9cd3af6256df9931932af9
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/c956a7437933ea85a40bb19daa829cc4a883aaa8
