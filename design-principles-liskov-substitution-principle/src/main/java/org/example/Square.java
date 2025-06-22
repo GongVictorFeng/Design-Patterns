@@ -1,22 +1,16 @@
 package org.example;
 
-public class Square extends Rectangle{
-    public Square(int side) {
-        super(side, side);
-    }
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+public class Square implements Shape{
+    private int side;
     @Override
-    public void setWidth(int width) {
-        setSide(width);
-    }
-
-    @Override
-    public void setHeight(int height) {
-        setSide(height);
-    }
-
-    private void setSide(int side) {
-        super.setWidth(side);
-        super.setHeight(side);
+    public int computeArea() {
+        return side * side;
     }
 }
