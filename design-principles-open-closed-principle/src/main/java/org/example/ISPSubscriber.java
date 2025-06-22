@@ -9,17 +9,14 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-public class ISPSubscriber {
-    private Long subscriberId;
-    private String address;
-    private Long phoneNumber;
-    private int baseRate;
+public class ISPSubscriber extends Subscriber {
     private long freeUsage;
 
+    @Override
     public double calculateBill() {
-        List<InternetSessionHistory.InternetSession> sessions = InternetSessionHistory.getCurrentSessions(subscriberId);
+        List<InternetSessionHistory.InternetSession> sessions = InternetSessionHistory.getCurrentSessions(getSubscriberId());
         long totalData = sessions.stream().mapToLong(InternetSessionHistory.InternetSession::getDataUsed).sum();
         long chargeableData = totalData - freeUsage;
-        return (double) (chargeableData * baseRate) /100;
+        return (double) (chargeableData * getBaseRate()) /100;
     }
 }

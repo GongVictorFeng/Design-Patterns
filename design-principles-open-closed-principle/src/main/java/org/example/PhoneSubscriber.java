@@ -7,16 +7,12 @@ import java.util.List;
 
 @Getter
 @Setter
-public class PhoneSubscriber {
-    private Long subscriberId;
-    private String address;
-    private Long phoneNumber;
-    private int baseRate;
-
-    //For demonstration purpose
+public class PhoneSubscriber extends Subscriber{
+    //For demonstration purpose - open for modification
+    @Override
     public double calculateBill() {
-        List<CallHistory.Call> sessions = CallHistory.getCurrentCalls(subscriberId);
+        List<CallHistory.Call> sessions = CallHistory.getCurrentCalls(getSubscriberId());
         long totalDuration = sessions.stream().mapToLong(CallHistory.Call::getDuration).sum();
-        return (double) (totalDuration * baseRate) /100;
+        return (double) (totalDuration * getBaseRate()) /100;
     }
 }
