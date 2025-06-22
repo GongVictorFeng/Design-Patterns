@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class UserController {
     //Store used by controller
-    private final Store store = new Store();
+    private final UserPersistenceService userPersistenceService = new UserPersistenceService();
     private final UserValidator userValidator = new UserValidator();
 
     public String createUser(String userJson) throws IOException {
@@ -14,7 +14,7 @@ public class UserController {
 
         if (!userValidator.validateUser(user)) return "ERROR";
 
-        store.store(user);
+        userPersistenceService.SaveUser(user);
         return "SUCCESS";
     }
 
