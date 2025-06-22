@@ -7,13 +7,11 @@ public class UserController {
     //Store used by controller
     private final UserPersistenceService userPersistenceService = new UserPersistenceService();
     private final UserValidator userValidator = new UserValidator();
+    private final UserMapper userMapper = new UserMapper();
 
     public String createUser(String userJson) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        User user = mapper.readValue(userJson, User.class);
-
+        User user = userMapper.convertTo(userJson);
         if (!userValidator.validateUser(user)) return "ERROR";
-
         userPersistenceService.SaveUser(user);
         return "SUCCESS";
     }
