@@ -10,4 +10,8 @@ import lombok.Setter;
 public class Rectangle {
     private int width;
     private int height;
+
+    public int computeArea() {
+        return width * height;
+    }
 }
