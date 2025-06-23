@@ -57,3 +57,20 @@
     * https://github.com/GongVictorFeng/Design-Patterns/commit/7d5185a2cacfd4eec7b85e4bda3050c608515e40
     * https://github.com/GongVictorFeng/Design-Patterns/commit/f4e6b0c3d9b2e1836e9cd3af6256df9931932af9
     * https://github.com/GongVictorFeng/Design-Patterns/commit/c956a7437933ea85a40bb19daa829cc4a883aaa8
+
+### Interface Segregation Principle
+* Clients should not be forced to depend upon interfaces that they do not use
+* Clients should not have to depend on methods that are defined in interfaces that they don't use
+* Interface Pollution - We should not cram methods that are unrelated in a big interface and make all other classes in our software system or in our module implement that interface
+  * Signs of Interface Pollution 
+    * Classes have empty method implementations
+    * Method implementations throw UnsupportedOperationException (or similar)
+    * Method implementations return null or default/dummy values
+* Break bigger interfaces so that methods or behaviors or contracts are defined in a particular interface are cohesive
+* Hands-on:
+  * The Interface PersistenceService has a method called findByName: https://github.com/GongVictorFeng/Design-Patterns/commit/b33c59e7b9603dffbda50406184f2ccd74176692
+  * The User has the name, but the order does not have the name
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/b1df341a28fd677eaeac4df2658627c429d91bb8
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/a88bbdcb3d47912c545c0116ac0f0623fbdee0b1
+  * the method findByName in OrderPersistenceService does not make sense: https://github.com/GongVictorFeng/Design-Patterns/commit/3e5c26d959b477848508b1259fea6409396e5051
+  * Removed the findByName method in PersistenceService, so that the OrderPersistenceService should not force to override this method: https://github.com/GongVictorFeng/Design-Patterns/commit/053de0d1664dd97286c3f22e5a7a00afd2861a76
