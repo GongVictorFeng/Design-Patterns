@@ -29,9 +29,4 @@ public class OrderPersistenceService implements PersistenceService<Order> {
             return ORDERS.get(id);
         }
     }
-
-    @Override
-    public List<Order> findByName(String name) {
-        throw new UnsupportedOperationException("Find by name is not supported");
-    }
 }
