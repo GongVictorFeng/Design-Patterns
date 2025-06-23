@@ -74,3 +74,11 @@
     * https://github.com/GongVictorFeng/Design-Patterns/commit/a88bbdcb3d47912c545c0116ac0f0623fbdee0b1
   * the method findByName in OrderPersistenceService does not make sense: https://github.com/GongVictorFeng/Design-Patterns/commit/3e5c26d959b477848508b1259fea6409396e5051
   * Removed the findByName method in PersistenceService, so that the OrderPersistenceService should not force to override this method: https://github.com/GongVictorFeng/Design-Patterns/commit/053de0d1664dd97286c3f22e5a7a00afd2861a76
+
+### Dependency Inversion Principle
+* High level Modules should not depend on low level modules. Both should depend on abstraction
+* Abstraction should not depend on details, details should depend on abstraction
+* High level Module means a module provides or implements some business rules
+* Low level Module is a functionality that is so basic that it can be used anywhere
+* Hands-on:
+  * 
