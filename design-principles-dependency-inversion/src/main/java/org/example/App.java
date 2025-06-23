@@ -1,13 +1,17 @@
 package org.example;
 
+import java.io.IOException;
+
 /**
  * Hello world!
  *
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
-        System.out.println( "Hello World!" );
+        Message msg = new Message("This is a message again");
+        MessagePrinter printer = new MessagePrinter();
+        printer.writeMessage(msg, "test_msg.txt");
     }
 }
