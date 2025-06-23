@@ -14,6 +14,7 @@ public class App
     {
         Message msg = new Message("This is a message again");
         MessagePrinter printer = new MessagePrinter();
+        //PrintWriter writer = new PrintWriter(System.out) can write message to console
         try(PrintWriter writer = new PrintWriter(new FileWriter("test_meg.txt"))) {
             printer.writeMessage(msg, new JSONFormatter(), writer);
         }
