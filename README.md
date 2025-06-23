@@ -81,4 +81,9 @@
 * High level Module means a module provides or implements some business rules
 * Low level Module is a functionality that is so basic that it can be used anywhere
 * Hands-on:
-  * 
+  * There are two dependencies in MessagePrinter, JSONFormatter and PrintWriter: https://github.com/GongVictorFeng/Design-Patterns/commit/4219edb308a83b7b284dabaa2d7b15356f455a51
+  * If we want to print this message on console, then current method is not working, need to create another method to use `System.out` instead of `PrintWriter`
+  * If we want to change the format other than JSON, we have to modify this method and change JSONFormatter to Other Formatter
+  * It violates the Dependency inversion, High level depends on Low level
+  * used dependency injects to make the method - writeMessage depends on abstract and only contains business rule
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/af8e0ae34261a5d22a0f6aa662140d6635061eca
