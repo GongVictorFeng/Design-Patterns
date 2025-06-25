@@ -92,3 +92,45 @@
 * Creational - Creational Patterns deal with the process of creating objects of classes
 * Structural - Structural patterns deal with how classes and objects are arranged or composed
 * Behavioral - Behavioral patterns describe how classes and objects interact and communicate with each other
+
+### Creational Patterns
+* The need of creational patterns - why not use new operator
+* new operator is needed + multiple additional requirements
+  * The object needs multiple other objects before it can be created
+  * There may be multiple steps before creating an object
+  * There may be only one object in the entire application
+
+#### Builder
+* The object of the class must be immutable
+  * Class constructor requires a lot of information
+* Objects that need other objects or "parts" to construct them
+* We have a complex process to construct an object involving multiple steps, then builder design pattern can help us
+* In builder, we remove the logic related to object construction from "client" code and abstract it in separated classes
+* UML: ![builder.png](assets%2Fbuilder.png)
+  * Product - final complex object that we want to create
+  * Builder - Provides interface for creating "parts" of the product
+    * provides a method - build() to assemble the final object
+    * provides a method - getProduct to query already built object
+  * Concrete Builder - Constructs parts and assembles final product and keeps track of product it creates
+  * Director - Uses builder to construct object and knows the steps and their sequence to build product
+* Implement a Builder
+  * Start by creating a builder
+    * Identify the "parts" of the product and provide methods to create those parts
+    * It should provide a method to "assemble" or build the product/object
+    * It must provide a way/method to get fully built object out. Optionally builder can keep reference to a product it has built so the same can be returned again in future
+  * A director can be a separate class or client can play the role of director
+* Hands-on:
+  * UML: ![builder-example.png](assets%2Fbuilder-example.png)
+  * Create Builder and Base class of final product: https://github.com/GongVictorFeng/Design-Patterns/commit/ce6ca5f5c2a65d8ba09b1b8269f20789277e09b4
+  * Create concrete Builder: https://github.com/GongVictorFeng/Design-Patterns/commit/fa0c75180431721f6efa61adfe1f065596a51939
+  * Create Client and Director: https://github.com/GongVictorFeng/Design-Patterns/commit/c8cc511716ef24f9416a6c354a91c96ba1699159
+* Implementation Considerations
+  * You can easily create an immutable class by implementing builder as an inner static class. You'll find this type of implementation used quite frequently even if immutability is not a main concern
+* Design Considerations
+  * The director role is rarely implemented as separate class, typically the consumer of the object instance or the client handles that role
+  * Abstract builder is also not required if "product" itself is not part of any inheritance hierarchy. You can directly create concrete builder
+  * If you are running into a "too many constructor arguments" problem then it is a good indication that builder pattern may help
+* Real world example - java.util.Calendar.Builder
+* Pitfalls
+  * A little bit complex for newcomers mainly because of "method chain" where builder methods return builder object itself
+  * Possibility of partially initialized object; user code can set only a few or none of properties using `withXXX` methods and call build(). If required properties are missing, build method should provide suitable defaults or throw exception
