@@ -148,3 +148,14 @@
     * Add a method which returns desired object instance
       * This method is typically static and will accept some argument to decide which class to instantiate
       * You can also provide additional arguments which will be used to instantiate objects
+* Hands-on
+  * Created abstract product: https://github.com/GongVictorFeng/Design-Patterns/commit/c4b090708fe4526af667ca0e49ba956ed1a361f4
+  * Created the subclasses of the product: https://github.com/GongVictorFeng/Design-Patterns/commit/ba96be856884d5cff45cd5a77266fbba64efee1f
+  * Created the class of simple factory and the method to get desired object instance: https://github.com/GongVictorFeng/Design-Patterns/commit/f600ea96f80e043e280c638b5db69f707f2b1838
+* Simple factory can be just a method in existing class. Adding a separate class allows other parts of code to use simple factory more easily
+* Simple factory itself does not need any state tracking, so it's best to keep this as static method
+* Simple factory will in turn may use other design pattern like builder to construct objects
+* In case you want to specialize simple factory in subclasses, you need factory design pattern instead
+* Real-world example: java.text.NumberFormat class has getInstance method, which is an example of simple factory
+* Pitfalls
+  * The criteria used by simple factory to decide which object to instantiate can get more convoluted/complex over time. If you find yourself in such situation then use factory design pattern
