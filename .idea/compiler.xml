@@ -11,6 +11,7 @@
         <module name="design-principles-open-closed-principle" />
         <module name="design-principles-interface-segregation-principle" />
         <module name="design-principles-dependency-inversion" />
+        <module name="simple-factory" />
         <module name="design-principles-liskov-substitution-principle" />
       </profile>
     </annotationProcessing>

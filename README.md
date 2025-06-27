@@ -134,3 +134,17 @@
 * Pitfalls
   * A little bit complex for newcomers mainly because of "method chain" where builder methods return builder object itself
   * Possibility of partially initialized object; user code can set only a few or none of properties using `withXXX` methods and call build(). If required properties are missing, build method should provide suitable defaults or throw exception
+
+#### Simple Factory
+* Multiple types can be instantiated and the choice is based on some simple criteria
+* We simply move the instantiation logic to a separate class and most commonly to a static method of this class
+* Some do not consider simple factory to be a "design pattern", as it is a simple method that encapsulates object instantiation. Nothing complex goes on in that method
+* Typically, we want to do this if we have more than one option when instantiating object and a simple logic is used to choose correct class 
+* UML:![simple-factory.png](assets%2Fsimple-factory.png)
+  * Product - Object of this class and its subclasses
+  * Simple Factory - Provides a static method to get instance of product subclass
+* Implementation
+  * We start by creating a separate class for simple factory
+    * Add a method which returns desired object instance
+      * This method is typically static and will accept some argument to decide which class to instantiate
+      * You can also provide additional arguments which will be used to instantiate objects

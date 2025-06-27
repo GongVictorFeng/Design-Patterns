@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/design-principles-interface-segregation-principle/pom.xml" />
         <option value="$PROJECT_DIR$/design-principles-dependency-inversion/pom.xml" />
         <option value="$PROJECT_DIR$/builder/pom.xml" />
+        <option value="$PROJECT_DIR$/simple-factory/pom.xml" />
       </list>
     </option>
   </component>
