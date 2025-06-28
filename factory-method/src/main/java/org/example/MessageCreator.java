@@ -15,5 +15,6 @@ public abstract class MessageCreator {
         return msg;
     }
 
+    //Factory method
     public abstract Message createMessage();
 }
