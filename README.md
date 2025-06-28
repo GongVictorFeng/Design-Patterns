@@ -159,3 +159,36 @@
 * Real-world example: java.text.NumberFormat class has getInstance method, which is an example of simple factory
 * Pitfalls
   * The criteria used by simple factory to decide which object to instantiate can get more convoluted/complex over time. If you find yourself in such situation then use factory design pattern
+
+#### Factory
+* We want to move the object creation logic from our code to a separate class
+* We use this pattern when we do not know in advance which class we may need to instantiate beforehand and also to allow new classes to be added to system and handle their creation without affecting client code
+* We let subclasses decide which object to instantiate by overriding the factory method
+* UML:![factory.png](assets%2Ffactory.png)
+  * Product - base class or interface of products created by factory method
+  * Concrete Product - implements the product interface or extend the product base class
+  * Creator - Declares the abstract factory method  and uses the factory method to create product
+  * Concrete creator - implement factory method and return one of concrete product instance
+* Implement a Factory Method
+  * We start by creating a class for our creator 
+    * Creator itself can be concrete if it can provide a default object, or it can be abstract
+    * Implementations will override the method and return an object
+* Hands-on:
+  * UML: ![factory-example.png](assets%2Ffactory-example.png)
+  * Created the abstract Message Class: https://github.com/GongVictorFeng/Design-Patterns/commit/ef1787a5114196c4b826fd73c2a906832acd6b3b
+  * Created the concrete classes of the message class: https://github.com/GongVictorFeng/Design-Patterns/commit/1c3c28f668eba8c63e0200aa6883d971e41470ff
+  * Created the abstract creator: https://github.com/GongVictorFeng/Design-Patterns/commit/48c6d669a7c650dad9743eca294326bcc738c541
+  * Created the concrete creators: https://github.com/GongVictorFeng/Design-Patterns/commit/5879ac729e7803cac24a8b010a6fdc5f82959635
+  * Created the client and test case for factory method: https://github.com/GongVictorFeng/Design-Patterns/commit/cba827524028a22d197bc8981cf73f6b85de4308
+* Implement Consideration
+  * The creator can be a concrete class and provide a default implementation for the factory method. In such cases you will create some "default" object in base creator
+  * You can also use the simple factory way of accepting additional arguments to choose between different object types. Subclasses can then override factory method to selectively create different objects for some criteria
+* Design Considerations
+  * Creator hierarchy in factory method pattern reflects the product hierarchy. We typically end up with a concrete creator per object type
+  * Template method design pattern often makes use of factory method
+  * Abstract factory makes use of factory method as well
+* Real-world example - Java.util.Collection has an abstract method called iterator()
+* Pitfalls
+  * More complex to implement. More classes involved and need unit test
+  * You have to start with Factory method design pattern from the beginning. It's not easy to refactor existing code into factory method pattern
+  * Sometimes this pattern forces you to subclass just to create appropriate instance
