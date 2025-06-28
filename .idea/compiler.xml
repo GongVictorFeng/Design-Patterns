@@ -13,6 +13,7 @@
         <module name="simple-factory" />
         <module name="builder" />
         <module name="design-principles-dependency-inversion" />
+        <module name="prototype" />
         <module name="design-principles-liskov-substitution-principle" />
       </profile>
     </annotationProcessing>
