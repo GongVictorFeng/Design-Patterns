@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/design-principles-dependency-inversion/pom.xml" />
         <option value="$PROJECT_DIR$/builder/pom.xml" />
         <option value="$PROJECT_DIR$/simple-factory/pom.xml" />
+        <option value="$PROJECT_DIR$/factory-method/pom.xml" />
       </list>
     </option>
   </component>

@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="builder" />
         <module name="design-principles-open-closed-principle" />
+        <module name="factory-method" />
         <module name="design-principles-interface-segregation-principle" />
-        <module name="design-principles-dependency-inversion" />
         <module name="simple-factory" />
+        <module name="builder" />
+        <module name="design-principles-dependency-inversion" />
         <module name="design-principles-liskov-substitution-principle" />
       </profile>
     </annotationProcessing>
