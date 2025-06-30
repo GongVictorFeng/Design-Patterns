@@ -227,3 +227,22 @@
   * Usability depends upon the number of properties in state that are immutable or can be shallow copied. An object where state is composed of large number of mutable object is complicated to clone
   * In java, the default clone operation will only perform the shallow copy so if you need a deep copy you have to implement it
   * Subclasses may not be able to support clone and so the code becomes complicated as you have to code for situations where an implementation may not support clone
+
+#### Abstract Factory
+* Abstract factory is used when we have two or more objects which work together forming a kit or set and there can be multiple sets or kits that can be created by client code
+* We separate client code from concrete objects forming such a set and also from the code which creates these sets
+* UML: ![abstract-factory.png](assets%2Fabstract-factory.png)
+  * Abstract Product - interface for a type of product
+  * Concrete Product - implements the product interface or class
+  * Abstract Factory - interface defining operations to create products
+  * Concrete Factory - implement factory and creates products from a particular family
+  * Client - uses abstract factory and abstract products
+* Implement Abstract Factory
+  * We start by studying the product "sets"
+    * Create abstract factory as an abstract class or an interface
+    * Abstract factory defines abstract methods for creating products
+    * Provide concrete implementation of factory for each set of products
+  * Abstract factory makes use of factory method pattern. You can think of abstract factory as an object with multiple factory methods
+* Hands-on:
+  * UML: ![abstract-factory-example.png](assets%2Fabstract-factory-example.png)
+  * 
