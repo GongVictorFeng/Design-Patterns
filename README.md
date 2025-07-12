@@ -120,7 +120,7 @@
     * It must provide a way/method to get fully built object out. Optionally builder can keep reference to a product it has built so the same can be returned again in future
   * A director can be a separate class or client can play the role of director
 * Hands-on:
-  * UML: ![builder-example.png](assets%2Fbuilder-example.png)
+  * UML: ![builder-example.png](assets/builder-example.png)
   * Create Builder and Base class of final product: https://github.com/GongVictorFeng/Design-Patterns/commit/ce6ca5f5c2a65d8ba09b1b8269f20789277e09b4
   * Create concrete Builder: https://github.com/GongVictorFeng/Design-Patterns/commit/fa0c75180431721f6efa61adfe1f065596a51939
   * Create Client and Director: https://github.com/GongVictorFeng/Design-Patterns/commit/c8cc511716ef24f9416a6c354a91c96ba1699159
@@ -140,7 +140,7 @@
 * We simply move the instantiation logic to a separate class and most commonly to a static method of this class
 * Some do not consider simple factory to be a "design pattern", as it is a simple method that encapsulates object instantiation. Nothing complex goes on in that method
 * Typically, we want to do this if we have more than one option when instantiating object and a simple logic is used to choose correct class 
-* UML:![simple-factory.png](assets%2Fsimple-factory.png)
+* UML:![simple-factory.png](assets/simple-factory.png)
   * Product - Object of this class and its subclasses
   * Simple Factory - Provides a static method to get instance of product subclass
 * Implementation
@@ -164,7 +164,7 @@
 * We want to move the object creation logic from our code to a separate class
 * We use this pattern when we do not know in advance which class we may need to instantiate beforehand and also to allow new classes to be added to system and handle their creation without affecting client code
 * We let subclasses decide which object to instantiate by overriding the factory method
-* UML:![factory.png](assets%2Ffactory.png)
+* UML:![factory.png](assets/factory.png)
   * Product - base class or interface of products created by factory method
   * Concrete Product - implements the product interface or extend the product base class
   * Creator - Declares the abstract factory method  and uses the factory method to create product
@@ -174,7 +174,7 @@
     * Creator itself can be concrete if it can provide a default object, or it can be abstract
     * Implementations will override the method and return an object
 * Hands-on:
-  * UML: ![factory-example.png](assets%2Ffactory-example.png)
+  * UML: ![factory-example.png](assets/factory-example.png)
   * Created the abstract Message Class: https://github.com/GongVictorFeng/Design-Patterns/commit/ef1787a5114196c4b826fd73c2a906832acd6b3b
   * Created the concrete classes of the message class: https://github.com/GongVictorFeng/Design-Patterns/commit/1c3c28f668eba8c63e0200aa6883d971e41470ff
   * Created the abstract creator: https://github.com/GongVictorFeng/Design-Patterns/commit/48c6d669a7c650dad9743eca294326bcc738c541
@@ -196,7 +196,7 @@
 #### Prototype
 * We have a complex object that is costly to create. To create more instances of such class, we use an existing instance as our prototype
 * Prototype will allow us to make copies of existing object and save us from having to recreate objects from scratch
-* UML: ![prototype.png](assets%2Fprototype.png)
+* UML: ![prototype.png](assets/prototype.png)
   * Prototype - declares a method for cloning itself
   * Concrete prototype - implements cloning method
   * Client - creates new instance using prototype's clone method
@@ -207,7 +207,7 @@
     * The method should declare CloneNotSupportedException in throw clause to give subclass chance to decide on whether to support cloning
   * Clone method implementation should consider the deep and shallow copy and choose whichever is applicable
 * Hands-on:
-  * UML: ![prototype-example.png](assets%2Fprototype-example.png)
+  * UML: ![prototype-example.png](assets/prototype-example.png)
   * Created the abstract prototype class: https://github.com/GongVictorFeng/Design-Patterns/commit/6a3c1a52980ae34025fbcf5db6a01073fa81d2ee
   * Created two concrete subclasses extend the prototype, one supports clone, another one is not: https://github.com/GongVictorFeng/Design-Patterns/commit/b57dde19fadb8684f414c294459910ba47e09537
   * Created client and test case: https://github.com/GongVictorFeng/Design-Patterns/commit/7625c549ade8a943bef8e1147d11872632c86413
@@ -231,7 +231,7 @@
 #### Abstract Factory
 * Abstract factory is used when we have two or more objects which work together forming a kit or set and there can be multiple sets or kits that can be created by client code
 * We separate client code from concrete objects forming such a set and also from the code which creates these sets
-* UML: ![abstract-factory.png](assets%2Fabstract-factory.png)
+* UML: ![abstract-factory.png](assets/abstract-factory.png)
   * Abstract Product - interface for a type of product
   * Concrete Product - implements the product interface or class
   * Abstract Factory - interface defining operations to create products
@@ -244,7 +244,7 @@
     * Provide concrete implementation of factory for each set of products
   * Abstract factory makes use of factory method pattern. You can think of abstract factory as an object with multiple factory methods
 * Hands-on:
-  * UML: ![abstract-factory-example.png](assets%2Fabstract-factory-example.png)
+  * UML: ![abstract-factory-example.png](assets/abstract-factory-example.png)
   * Created the abstract factory: https://github.com/GongVictorFeng/Design-Patterns/commit/92f4915eb8ad283d01377b905c5e67012559692a
   * Created the abstract instance and the abstract storage: https://github.com/GongVictorFeng/Design-Patterns/commit/4a396e96de0e47b01beb441e0703572e45b75d4e
   * Created the concrete EC2 instance and GoogleComputeEngineInstance: https://github.com/GongVictorFeng/Design-Patterns/commit/eaf1da0bb54a9f2d7b0c134646573541a8c657b4
