@@ -106,7 +106,7 @@
 * Objects that need other objects or "parts" to construct them
 * We have a complex process to construct an object involving multiple steps, then builder design pattern can help us
 * In builder, we remove the logic related to object construction from "client" code and abstract it in separated classes
-* UML: ![builder.png](assets%2Fbuilder.png)
+* UML: ![builder.png](assets/builder.png)
   * Product - final complex object that we want to create
   * Builder - Provides interface for creating "parts" of the product
     * provides a method - build() to assemble the final object
