@@ -245,4 +245,23 @@
   * Abstract factory makes use of factory method pattern. You can think of abstract factory as an object with multiple factory methods
 * Hands-on:
   * UML: ![abstract-factory-example.png](assets%2Fabstract-factory-example.png)
-  * 
+  * Created the abstract factory: https://github.com/GongVictorFeng/Design-Patterns/commit/92f4915eb8ad283d01377b905c5e67012559692a
+  * Created the abstract instance and the abstract storage: https://github.com/GongVictorFeng/Design-Patterns/commit/4a396e96de0e47b01beb441e0703572e45b75d4e
+  * Created the concrete EC2 instance and GoogleComputeEngineInstance: https://github.com/GongVictorFeng/Design-Patterns/commit/eaf1da0bb54a9f2d7b0c134646573541a8c657b4
+  * Created the concrete S3 Storage and GoogleCloudStorage: https://github.com/GongVictorFeng/Design-Patterns/commit/313a870c7d6bdcd423138838fecf0d2dcfe5756c
+  * Created the factory implementation for AWS and Google cloud platform: https://github.com/GongVictorFeng/Design-Patterns/commit/4a6dcdc104a8e27e2f89e53418e83b0970f3b897
+  * Created the client and test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/35d8592c355d89493fdf8379e85062962a7e7849
+* Implementation Considerations
+  * Factories can be implemented as singletons, we typically ever need only one instance of it anyway. But make sure to familiarize yourself with drawbacks of singletons
+  * Adding a new product type requires changes to the base factory as well as all implementations of factory
+  * We provide the client code with concrete factory so that it can create objects
+* Design Considerations
+  * When you want to constrain object creations so that they all work together then abstract factory is good design pattern
+  * Abstract factory uses factory method pattern
+  * If objects are expensive to create then you can transparently switch factory implementations to use prototype design pattern to create objects
+* Real-word example - javax.xml.parsers.DocumentBuilderFactory
+* Pitfalls
+  * A lot more complex to implement than factory method
+  * Adding a new product requires changes to base factory as well as all implementations of factory
+  * Difficult to visualize the need at start of development and usually starts out as a factory method
+  * Abstract factory design pattern is very specific to the problem of "product families"
