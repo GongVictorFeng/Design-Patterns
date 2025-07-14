@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/factory-method/pom.xml" />
         <option value="$PROJECT_DIR$/prototype/pom.xml" />
         <option value="$PROJECT_DIR$/abstract-factory/pom.xml" />
+        <option value="$PROJECT_DIR$/singleton/pom.xml" />
       </list>
     </option>
   </component>
