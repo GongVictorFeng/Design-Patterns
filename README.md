@@ -265,3 +265,44 @@
   * Adding a new product requires changes to base factory as well as all implementations of factory
   * Difficult to visualize the need at start of development and usually starts out as a factory method
   * Abstract factory design pattern is very specific to the problem of "product families"
+
+#### Singleton
+* A singleton class has only one instance, accessible globally through a single point (via a method/field)
+* Main problem this pattern solves is to ensure that only a single instance of this class exists
+* Any state you add in your singleton becomes part of "global state" of your application
+* UML: ![singleton.png](assets/singleton.png)
+  * Singleton - responsible for creating unique instance and provides static method to get the instance
+* Implement a Singleton
+  * Controlling instance creation
+    * Class constructors must not be accessible globally
+    * Subclassing/inheritance must not be allowed
+  * Keeping track of instance
+    * Class itself is a good place to track the instance
+  * Giving access to the singleton instance
+    * A public static method is good choice
+    * Can expose instance as final public static field, but it won't work for all singleton implementations
+  * Two options for implementing a singleton
+    * Early initialization - Eager Singleton
+      * Create singleton as soon as class is loaded
+    * Lazy initialization - Lazy Singleton
+      * Singleton is created when it is first required
+* Hands-on
+  * Created the implementation of eager singleton: https://github.com/GongVictorFeng/Design-Patterns/commit/a357870cb909924ca6a8785d12b0c10e814d5512
+  * Created the implementation of lazy singleton with double lock checking: https://github.com/GongVictorFeng/Design-Patterns/commit/0d165bfb847d9cf8af29a042133e1cdf4d86b09b
+  * Created the implementation of lazy singleton with initialization holder: https://github.com/GongVictorFeng/Design-Patterns/commit/19b9157d4a74953cb2a133d43e9574f0a1e5206f
+  * Created the implementation of singleton using enum: https://github.com/GongVictorFeng/Design-Patterns/commit/c0a43a10e155083cfdb1b8cc685555ae9d1aca45
+* Implementation consideration
+  * Early/Eager initialization is the simplest and preferred way. Always try to use this approach first
+  * The "classic" singleton pattern implementation uses double check locking and volatile field
+  * The lazy initialization holder idiom provides best of both worlds, you do not deal with synchronization issues directly and is easy to implement
+  * You can also implement singletons using enum. However, due to pre-conceptions about what an enum is, it may be a hard sell during code review especially if singleton has mutable fields
+  * If the simple solution works then use it
+* Design Considerations
+  * Singleton creation does not need any parameters. If you find yourself in need of support for constructor arguments, you need a simple factory or factory method pattern instead.
+  * Make sure that your singleton are not carrying a lot of mutable global state
+* Real-world example - java.lang.Runtime class in standard Java API is a singleton
+* Pitfalls
+  * Singleton pattern can deceive you about dependencies. Since they are globally accessible, it's easy to miss dependencies
+  * They are hard to unit test. You cannot easily mock the instance that is returned
+  * Most common way to implement Singletons in Java is through static variables, and they are held per class loader and not per JVM. So they may not be truly Singleton in an OSGi or web application
+  * A singleton carrying around a large mutable global state is a good indication of an abused Singleton pattern
