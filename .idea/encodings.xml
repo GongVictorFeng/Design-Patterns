@@ -15,6 +15,8 @@
     <file url="file://$PROJECT_DIR$/design-principles-open-closed-principle/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/factory-method/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/factory-method/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/object-pool/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/object-pool/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/prototype/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/prototype/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/simple-factory/src/main/java" charset="UTF-8" />
