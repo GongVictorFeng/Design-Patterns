@@ -306,3 +306,42 @@
   * They are hard to unit test. You cannot easily mock the instance that is returned
   * Most common way to implement Singletons in Java is through static variables, and they are held per class loader and not per JVM. So they may not be truly Singleton in an OSGi or web application
   * A singleton carrying around a large mutable global state is a good indication of an abused Singleton pattern
+
+#### Object Pool
+* In our system if cost of creating an instance of a class is high, and we need a large number of objects of this class for short duration, then we can use an object pool
+* Here we either pre-create objects of the class or collect unused instances in an in-memory cache. When code needs an object of this class we provide it from the cache
+* One of the most complicated patterns to implement efficiently
+* UML: ![object-pool.png](assets/object-pool.png)
+  * Object pool - Caches instances of reusable product and provide them
+  * Abstract reusable product - Abstract product defining operation
+  * Concrete reusable product - Implementation of reusable product with state
+  * Client - Uses object pool to get instances of reusable product
+* Implement object pool 
+  * We start by creating class for object pool
+    * A thread-safe caching of objects should be done in pool
+    * Methods to acquire and release objects should be provided and pool should reset cached object before giving them out
+  * The reusable object must provide methods to reset its state upon "release" by code
+  * We have to decide whether to create new pooled objects when pool is empty or to wait until an object becomes available. Choice is influenced by whether the object is tied to a fixed number of external resources
+* Hands-on
+  * UML: ![object-pool-example.png](assets/object-pool-example.png)
+  * Created abstract reusable: https://github.com/GongVictorFeng/Design-Patterns/commit/eec1f46f39c236321c2cbfe5c6639e3de0063277
+  * Created concrete reusable: https://github.com/GongVictorFeng/Design-Patterns/commit/fb20d1972b0a555a0e8a7962bdae99c856814465
+  * Created object pool: https://github.com/GongVictorFeng/Design-Patterns/commit/d7c9a409a067f5befd0994c3943050be6d185e3e
+  * Created client and test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/6fd467a6d935e9f4f2af0a94b22c7dd0faf4c7cb
+* Implementation Consideration
+  * Resetting object state should NOT be costly operation otherwise you may end up losing your performance savings.
+  * Pre-cashing objects; meaning creating objects in advance can be helpful as it won't slow down the code using these objects. However, it may add-up to start up time and memory consumption.
+  * Object pool's synchronization should consider the reset time needed and avoid resetting in synchronized context if possible
+* Design Considerations
+  * Object pool can be parameterized to cache and return multiple objects, and the acquire method can provide selection criteria
+  * Pooling objects is only beneficial if they involve costly initialization because of initialization of external resource like a connection or a thread. Do not pool object JUST to save memory, unless you are running into out of memory errors.
+  * Do not pool long-lived objects or only to save frequent call to new. Pooling may actually negatively impact performance in such cases.
+* Real-world Example
+  * java.util.concurrent.ThreadPoolExecutor is an example of object pool pattern which pools threads. Even though we can directly use this class, we will often use it via ExecutorService interface using method like Executors like newCachedThreadPool().
+  * Class org.apache.commons.dbcp.BasicDataSource in dbcp package is an example of object pool pattern which pools database connections. This pool is commonly created and exposed via JNDI or as a Spring bean in applications.
+* Pitfalls
+  * Successful implementation depends on correct use by the client code. Releasing objects back to pool can be vital for correct working.
+  * The reusable object needs to take care of resetting its state in efficient way. Some objects may not be suitable for pooling due to this requirement.
+  * Difficult to use in refactoring legacy code as the client code and reusable object both need to be aware of object pool
+  * You have to decide what happens when pool is empty and there is a demand for an object. You can either wait for an object to become free or create a new object. Both options have issues. Waiting can have severe negative impact on performance.
+  * If you create new objects when code asks for an object and none are available then you have to do additional work to maintain or trim the pool size or else you'll end up with very large pool.
