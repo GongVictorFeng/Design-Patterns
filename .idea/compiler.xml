@@ -12,6 +12,7 @@
         <module name="factory-method" />
         <module name="design-principles-interface-segregation-principle" />
         <module name="simple-factory" />
+        <module name="adapter" />
         <module name="object-pool" />
         <module name="builder" />
         <module name="design-principles-dependency-inversion" />
