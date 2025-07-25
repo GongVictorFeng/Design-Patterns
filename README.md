@@ -345,3 +345,52 @@
   * Difficult to use in refactoring legacy code as the client code and reusable object both need to be aware of object pool
   * You have to decide what happens when pool is empty and there is a demand for an object. You can either wait for an object to become free or create a new object. Both options have issues. Waiting can have severe negative impact on performance.
   * If you create new objects when code asks for an object and none are available then you have to do additional work to maintain or trim the pool size or else you'll end up with very large pool.
+
+### Structural Design Pattern
+
+Structural patterns deal with how classes and objects are arranged or composed
+
+#### Adapter
+* What is Adapter
+  * We have an existing object which provides the functionality that client needs. But client code can not use this object because it expects an object with different interface
+  * Using adapter design pattern we make this existing object work with client by adapting the object to client's expected interface
+  * This pattern is also called as wrapper as it "wraps" existing object
+* UML:
+  * Class Adapter: ![class-adapter.jpeg](assets/class-adapter.jpeg)
+    * Client - Needs functionality provided but as different interface than Adaptee
+    * Target interface - Interface expected by client
+    * Adapter - Adapts existing functionality to target interface
+    * Adaptee - our existing class providing needed functionality
+  * Object Adapter: ![object-adapter.jpeg](assets/object-adapter.jpeg)
+    * Using composition instead of inheritance
+* Implement an Adapter
+  * We start by creating a class for Adapter
+    * Adapter must implement the interface expected by client
+    * First we are going to try out a class adapter by also extending from our existing class
+    * In the class adapter implementation we are simply going to forward the method to another method inherited from adaptee
+    * Next for object adapter, we are only going to implement target interface and accept adaptee as constructor argument in adapter i.e. make use of composition
+  * An object adapter should take adaptee as an argument in constructor or as a less preferred solution, you can instantiate it in the constructor thus tightly coupling with a specific adaptee
+* Hands-on:
+  * UML:
+    * ![class-adapter-example.jpeg](assets/class-adapter-example.jpeg)
+    * ![object-adapter-example.jpeg](assets/object-adapter-example.jpeg)
+  * Created adaptee: https://github.com/GongVictorFeng/Design-Patterns/commit/49f9bd09c09c4d5f104e5f6f33485dbb777f4a81
+  * Created target interface: https://github.com/GongVictorFeng/Design-Patterns/commit/e3f1a9df50d2a0cb9d664883863d8204047655e4
+  * Created client: https://github.com/GongVictorFeng/Design-Patterns/commit/45515499de923199f0ffddef9331b29fe81caca4
+  * Created class adapter: https://github.com/GongVictorFeng/Design-Patterns/commit/3d5a331847bead8180d63414c74c5315ce25848e
+  * Created object adapter: https://github.com/GongVictorFeng/Design-Patterns/commit/dd5f2b7301d1286e25ed7969d8dce145afa0ecbe
+  * Created test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/c841831a44443a7b250e691941b56d0f3508d75a
+* Implementation Consideration
+  * How much work the adapter does, depends upon the difference between target interface and object being adapted. If method arguments are same or similar, adapter has very less work to do.
+  * Using class adapter "allows" you to override some of the adaptee's behavior. But this has to be avoided as you end up with adapter that behaves differently than adaptee. Fixing defects is not easy anymore
+  * Using object adapter allows you to potentially change the adaptee object to one of its subclasses
+* Design Considerations
+  * In java a "class adapter" may not be possible if both target and adaptee are concrete classes. In such cases, the object adapter is the only solution. Also since there is no private inheritance in Java, It's better to stick with object adapter.
+  * A class adapter is also called as a two-way adapter, since it can stand in for both the target interface and for the adaptee. That is we can use object of adapter where either target interface is expected as well as where an adaptee object is expected.
+* Real-world example
+  * The java.io.InputStreamReader and java.io.OutputStreamWriter class are examples of object adapters
+  * These classes adapt existing InputStream and OutputStream object to a Reader/Writer interface
+* Pitfalls
+  * Using target interface and adaptee class to extend our adapter we can create a "class adapter" in java. However, it creates an object which exposes unrelated methods in parts of your code, polluting it. Avoid class adapters! It is mentioned here only for sake of completeness.
+  * It is tempting to da a lot of things in adapter besides simple interface translation. But this can result in an adapter showing different behavior than the adapted object
+  * Not a lot of other pitfalls! As long as we keep them true to their purpose of simple interface translation, they are good.
