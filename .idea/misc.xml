@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/singleton/pom.xml" />
         <option value="$PROJECT_DIR$/object-pool/pom.xml" />
         <option value="$PROJECT_DIR$/adapter/pom.xml" />
+        <option value="$PROJECT_DIR$/flyweight/pom.xml" />
       </list>
     </option>
   </component>

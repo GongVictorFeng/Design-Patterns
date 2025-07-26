@@ -8,17 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="singleton" />
+        <module name="simple-factory" />
+        <module name="adapter" />
+        <module name="design-principles-dependency-inversion" />
+        <module name="prototype" />
+        <module name="flyweight" />
+        <module name="abstract-factory" />
         <module name="design-principles-open-closed-principle" />
         <module name="factory-method" />
         <module name="design-principles-interface-segregation-principle" />
-        <module name="simple-factory" />
-        <module name="adapter" />
         <module name="object-pool" />
         <module name="builder" />
-        <module name="design-principles-dependency-inversion" />
-        <module name="prototype" />
         <module name="design-principles-liskov-substitution-principle" />
-        <module name="abstract-factory" />
       </profile>
     </annotationProcessing>
   </component>
