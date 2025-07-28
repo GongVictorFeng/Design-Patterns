@@ -394,3 +394,41 @@ Structural patterns deal with how classes and objects are arranged or composed
   * Using target interface and adaptee class to extend our adapter we can create a "class adapter" in java. However, it creates an object which exposes unrelated methods in parts of your code, polluting it. Avoid class adapters! It is mentioned here only for sake of completeness.
   * It is tempting to da a lot of things in adapter besides simple interface translation. But this can result in an adapter showing different behavior than the adapted object
   * Not a lot of other pitfalls! As long as we keep them true to their purpose of simple interface translation, they are good.
+
+#### Flyweight
+* Our system needs a large number of objects of a particular class and maintaining these instances is a performance concern.
+* Flyweight allows us to share an object in multiple contexts. But instead of sharing entire object, which may not be feasible, we divide object state in two parts: intrinsic state - that is shared in every context, and extrinsic state - context specific state. We create objects with only intrinsic state and share them in multiple contexts.
+* Client or user of object provides the extrinsic state to object to carry out its functionality
+* We provide a factory so client can get required flyweight objects based on some key to identify flyweight
+* UML: ![flyweight.jpeg](assets/flyweight.jpeg)
+  * Flyweight - Interface for flyweight and method to receive extrinsic state
+  * Concrete Flyweight - Has only intrinsic state; implements methods and uses provided extrinsic state
+  * Unshared Flyweight - Object of these are not shared
+  * Flyweight Factory - Provides instances of flyweights; take care of sharing
+  * Client - Computes or stores extrinsic state of used flyweights
+* Implementation a Flyweight
+  * We start by identifying "intrinsic" and "extrinsic" state of our object
+    * We create an interface for flyweight to provide common methods that accept extrinsic state
+    * In implementation of shared flyweight we add intrinsic state and also implement methods
+    * In unshared flyweight implementation, we simply ignore the extrinsic state argument as we have all state within object
+  * Next we implement the flyweight factory which cashes flyweights and also provides method to get them
+  * In our client we either maintain the extrinsic state or compute it on the run time when using flyweight
+* Hands-on:
+  * UML: ![flyweight-example.jpeg](assets/flyweight-example.jpeg)
+  * Created the interface for flyweight: https://github.com/GongVictorFeng/Design-Patterns/commit/8e060e4d91a394a4c9fd6a84b4edabe4a9ae1dc5
+  * Created implementation of shared flyweight: https://github.com/GongVictorFeng/Design-Patterns/commit/edae76bb707fdf00e0c17d4228386cd8aebe3b74
+  * Created implementation of unshared flyweight: https://github.com/GongVictorFeng/Design-Patterns/commit/ec181258ee13e69123f9f2b86306c6c9c3e2e996
+  * Created flyweight factory: https://github.com/GongVictorFeng/Design-Patterns/commit/2d8b7b47584e46a9d745c3700adf2f90186d949c
+  * Created client and test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/c07d908fc2b377081f9d4d3721c5b4d28cf1a701
+* Implementation Considerations
+  * A factory is necessary with flyweight design pattern as client code needs easy way to get hold of shared flyweight. Also number of shared instances can be large, so a central place is good strategy to keep track of all of them
+  * Flyweight's intrinsic state should be immutable for successful use of flyweight pattern
+* Design Considerations
+  * Usability of flyweight is entirely dependent upon presence of sensible extrinsic state in object which can be moved out of object without any issue
+  * Some other design patterns like state and strategy can make best use of flyweight pattern.
+* Real-World Example:
+  * Java uses flyweight pattern for Wrapper classes like java.lang.Integer, Short, Byte etc. Here the valueOf static method serves as the factory method.
+  * String pool which is maintained by JVM is also an example of flyweight. We can call the intern() method on a String object to explicitly request this String object to be interned. This method will return a reference to already cached object if present or else will create new String in cache if not present.
+* Pitfalls
+  * Runtime cost may be added for maintaining extrinsic state. Client code has to either maintain it or compute it every time it needs to use flyweight.
+  * It is often difficult to find perfect candidate objects for flyweight. Graphical applications benefit heavily from this pattern however a typical web application may not have a lot of use for this pattern.
