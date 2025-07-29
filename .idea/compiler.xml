@@ -19,6 +19,7 @@
         <module name="design-principles-interface-segregation-principle" />
         <module name="object-pool" />
         <module name="builder" />
+        <module name="bridge" />
         <module name="design-principles-liskov-substitution-principle" />
       </profile>
     </annotationProcessing>

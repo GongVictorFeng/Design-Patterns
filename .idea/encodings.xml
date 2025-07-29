@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/abstract-factory/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adapter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/adapter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bridge/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bridge/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/builder/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/builder/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/design-principles-dependency-inversion/src/main/java" charset="UTF-8" />
