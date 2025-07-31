@@ -432,3 +432,39 @@ Structural patterns deal with how classes and objects are arranged or composed
 * Pitfalls
   * Runtime cost may be added for maintaining extrinsic state. Client code has to either maintain it or compute it every time it needs to use flyweight.
   * It is often difficult to find perfect candidate objects for flyweight. Graphical applications benefit heavily from this pattern however a typical web application may not have a lot of use for this pattern.
+#### Bridge Pattern
+* Our implementation and abstractions are generally coupled to each other in normal inheritance
+* Using bridge pattern we can decouple them so they can both change without affecting each other
+* We achieve this feat by creating two separate inheritance hierarchies; one for implementation and another abstraction
+* We use composition to bridge there two hierarchies
+* UML: ![bridge.jpeg](assets/bridge.jpeg)
+  * Abstraction - defines abstraction's interface; has reference to implementor
+  * Refined Abstraction - More specialized abstraction
+  * Implementor - Base interface for implementation classes; methods are unrelated to abstraction, and typically represent smaller steps needed
+  * Concrete Implementor - Implements implementor methods
+* Implement a Bridge
+  * We start by defining our abstraction as needed by client
+    * We determine common base operations and define them in abstraction
+    * We can optionally also define a refined abstraction and provide more specialized operations
+    * Then we define our implementor next. Implementor methods do Not have to match with abstraction. However, abstraction can carry out its work by using implementor methods.
+    * Then we write one or more concrete implementor providing implementation
+  * Abstractions are created by composing them with an instance of concrete implementor which it used by methods in abstraction
+* Hands-on
+  * UML: ![bridge-example.jpeg](assets/bridge-example.jpeg)
+  * Created the abstraction and refined abstraction: https://github.com/GongVictorFeng/Design-Patterns/commit/9eb46c2880286631d3769e940354dc00e23b7201
+  * Created the abstraction of implementor: https://github.com/GongVictorFeng/Design-Patterns/commit/5927ae54f4da8bd7af67e60a5849037058467f58
+  * Created two concrete implementors: https://github.com/GongVictorFeng/Design-Patterns/commit/53a6f25d00084470af81007e79352eb2da6d68d8
+  * Created the client and test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/c26cd2ca1f5baf8d333ed7cef9339a0f60267579
+* Implementation Considerations
+  * In case we are ever going to have a single implementation, then we can skip creating abstract implementor
+  * Abstraction can decide on its own which concrete implementor to use in its constructor, or we can delegate that decision to a third class. In last approach abstraction remains unaware of concrete implementors & provides greater de-coupling
+* Design Considerations
+  * Bridge provides great extensibility by allowing us to change abstraction and implementor independently. You can build & package them separately to modularize overall system
+  * By using abstract factory pattern to create abstraction objects with correct implementation you can decouple concrete implementors from abstraction
+* Real-world Example
+  * An example of bridge pattern often given is the JDBC API. More specifically the java.sql.DriverManager class with the java.sql.DriverManager class with the java.sql.Driver interface form a bridge pattern
+  * Another example of bridge pattern is the Collections.newSetFromMap() method. This method returns a Set which is backed by given map object.
+* Pitfalls:
+  * It is fairly complex to understand & implement bridge design pattern
+  * You need to have a well-thought-out & fairly comprehensive design in front of you before you can decide on bridge pattern.
+  * Needs to be designed up front. Adding bridge to legacy code is difficult. Even for ongoing project adding bridge at later time in development may require fair amount of rework
