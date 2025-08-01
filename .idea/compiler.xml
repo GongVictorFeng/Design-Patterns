@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="singleton" />
+        <module name="decorator" />
         <module name="simple-factory" />
         <module name="adapter" />
         <module name="design-principles-dependency-inversion" />
