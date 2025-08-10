@@ -468,3 +468,38 @@ Structural patterns deal with how classes and objects are arranged or composed
   * It is fairly complex to understand & implement bridge design pattern
   * You need to have a well-thought-out & fairly comprehensive design in front of you before you can decide on bridge pattern.
   * Needs to be designed up front. Adding bridge to legacy code is difficult. Even for ongoing project adding bridge at later time in development may require fair amount of rework
+#### Decorator
+* When we want to enhance behaviors of our existing object dynamically, then we can use decorator design pattern
+* Decorator wraps an object within itself and provides same interface as the wrapped object. So the client of original object doesn't need to change
+* A decorator provides alternative to subclassing for extending functionality of existing classes
+* UML: ![decorator.jpeg](assets/decorator.jpeg)
+  * Component - Defines interface used by client
+  * Concrete Component - Plain object which can be decorated
+  * Decorator - Provides additional behaviour; maintains reference to component
+* Implement a Decorator
+  * We start with our component
+    * Component defines interface needed or already used by client
+    * Concrete component implements the component
+    * We define our decorator. Decorator implements component & also needs reference to concrete component
+    * In decorator methods we provide additional behaviour on top that provided by concrete component instance
+  * Decorator can be abstract as well & depend on subclasses to provided functionality
+* Hands-on:
+  * UML: ![decorator-example.jpeg](assets/decorator-example.jpeg)
+  * Created the components with interface needed: https://github.com/GongVictorFeng/Design-Patterns/commit/bb9cf3bd6d9d59aebfbdf35bbdcc2dbaa8a828ff
+  * Created concrete component which implements the component: https://github.com/GongVictorFeng/Design-Patterns/commit/81c6b4548be41348ce08e172a748f34f03d97ab5
+  * Created two decorators: https://github.com/GongVictorFeng/Design-Patterns/commit/574ad2e29be577310474e3aac3ec3b433cd538a4
+  * Created the client and test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/d3cc2170c745244f554f7e0423644ffc349ef19c
+* Implementation Consideration:
+  * Since we have decorators and concrete classes extending from common component, avoid large state in this base class as decorators may not need all that state
+  * Pay attention to equals and hasCode methods of decorator. When using decorators, you have to decide if decorated object is equal to the same instance without decorator
+  * Decorators support recursive composition, and so this pattern lends itself to the creation of lots of small objects that add "just a little bit" functionality. Code using these objects becomes difficult to debug.
+* Design Considerations:
+  * Decorators are more flexible and powerful than inheritance. Inheritance is static by definition but decorators allow you to dynamically compose behaviour using objects at runtime
+  * Decorators should act like additional skin over your object. They should add helpful small behaviours to object's original behaviours. Do not change meaning of the operations.
+* Real-world Example:
+  * Classes in Java's I/O package are great examples of decorator pattern
+  * For example the java.io.BufferedOutputStream class decorates any java.io.OutputStream object and adds buffering to file writing operation. This improves the disk i/o performance by reducing number of writes
+  * UML: ![decorator-java-io-example.jpeg](assets/decorator-java-io-example.jpeg)
+* Pitfalls:
+  * Often results in large number of classes being added to system, where each class adds a small amount of functionality. You often end up with lots of objects, one nested inside another and so on.
+  * Sometimes newcomers will start using it as a replacement of inheritance in every scenario, Think of decorators as a thin skin over existing object
