@@ -18,6 +18,7 @@
         <module name="design-principles-open-closed-principle" />
         <module name="factory-method" />
         <module name="design-principles-interface-segregation-principle" />
+        <module name="composite" />
         <module name="object-pool" />
         <module name="builder" />
         <module name="bridge" />

@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/flyweight/pom.xml" />
         <option value="$PROJECT_DIR$/bridge/pom.xml" />
         <option value="$PROJECT_DIR$/decorator/pom.xml" />
+        <option value="$PROJECT_DIR$/composite/pom.xml" />
       </list>
     </option>
   </component>
