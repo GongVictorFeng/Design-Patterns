@@ -503,3 +503,40 @@ Structural patterns deal with how classes and objects are arranged or composed
 * Pitfalls:
   * Often results in large number of classes being added to system, where each class adds a small amount of functionality. You often end up with lots of objects, one nested inside another and so on.
   * Sometimes newcomers will start using it as a replacement of inheritance in every scenario, Think of decorators as a thin skin over existing object
+
+#### Composite
+* We have a part-whole relationship or hierarchy of objects, and we want to be able to treat all objects in this hierarchy uniformly.
+* This is NOT a simple composition concept from object-oriented programming but a further enhancement to that principle
+* Think of composite pattern when dealing with tree structure of objects
+* UML: ![composite.jpeg](assets%2Fcomposite.jpeg)
+  * Component - Defines behavior common to all classes including method to access children
+  * Composite - Stores child components
+  * Leaf - Represents leaf objects & behaviors of primitive objects
+  * Client - Works with object hierarchy using component interface only
+* Implement a Composite
+  * We start by creating an abstract class interface for Component
+    * Component must declare all methods that are applicable to both leaf and composite
+    * We have to choose where to define the children management operations, component or composite
+    * Then we implement the composite. An operation invoked on composite is propagated to all its children
+    * In leaf nodes we have to handle the non-applicable operations like add/remove a child if they are defined in component
+  * In the end, a composite pattern implementation will allow you to write algorithms without worrying about whether node is leaf or composite
+* Hands-On:
+  * UML: ![composite-example.jpeg](assets%2Fcomposite-example.jpeg)
+  * Created the abstract class or interface for component: https://github.com/GongVictorFeng/Design-Patterns/commit/bfe7ea45ac36c4ea8ff55d94493fc82401e512a0
+  * Created the leaf node in composite pattern: https://github.com/GongVictorFeng/Design-Patterns/commit/55273b6c1d74bce0406d3967f4a2100a617c88f7
+  * Created the composite in composite pattern: https://github.com/GongVictorFeng/Design-Patterns/commit/7610b0811bd4151a982bdb07bf1620f8b032d860
+  * Created the client and the test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/6106094bec5d71834a889cc662ed7245f14eae25
+* Implementation Considerations
+  * You can provide a method to access parent of a node. This will simplify traversal of the entire tree
+  * You can define the collection field to maintain children in base component instead of composite but again that field has no use in leaf class
+  * If leaf objects can be repeated in the hierarchy, then shared leaf nodes can be used to save memory and initialization costs. But again the number of nodes is major deciding factor as using a cache for small total number of nodes may cost more
+* Design Considerations
+  * Decision needs to be made about where child management operations are defined. Defining them on component provides transparency but leaf nodes are forced to implement those methods. Defining them on composite is safer but client needs to be made aware of composite
+  * Overall goal of design should be to make client code easier to implement when using composite. This is possible if client code can work with component interface only and doesn't need to worry about leaf-composite distinction
+* Real-World Example
+  * Composite is used in many UI frameworks, since it easily allows to represent a tree of UI controls
+  * In JSF, we have UIViewRoot class which acts as composite. Other UIComponent implementations like UIOutput, UIMessage act as leaf nodes
+  * UML: ![class-JSF-composite.png](assets%2Fclass-JSF-composite.png)
+* Pitfalls
+  * Difficult to restrict what is added to hierarchy. If multiple types of leaf nodes are present in system then client code ends up doing runtime checks to ensure the operation is available on a node
+  * Creating the original hierarchy can still be complex implementation especially if you are using caching to reuse nodes and number of nodes are quite high
