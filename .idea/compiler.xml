@@ -11,6 +11,7 @@
         <module name="decorator" />
         <module name="simple-factory" />
         <module name="adapter" />
+        <module name="facade" />
         <module name="design-principles-dependency-inversion" />
         <module name="prototype" />
         <module name="flyweight" />
