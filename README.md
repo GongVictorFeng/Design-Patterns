@@ -553,3 +553,14 @@ Structural patterns deal with how classes and objects are arranged or composed
     * We determine the overall "use cases"/tasks that the subsystem is used for
     * We write a method that exposes each "use case" or task
     * This method takes care of working with different class of subsystem
+* Hands-on:
+  * UML:![facade-example.png](assets%2Ffacade-example.png)
+  * Created the email facade: https://github.com/GongVictorFeng/Design-Patterns/commit/bc8c6ff70ab8914041f51d3ad396b04dcdb5e8a5
+  * Refactored the client to avoid the tightly coupling: https://github.com/GongVictorFeng/Design-Patterns/commit/4e07d8cc1f61aef2e3e62dd0b22819513cdf0857
+* Implementation Consideration:
+  * A facade should minimize the complexity of subsystem and provide usable interface
+  * You can have an interface or abstract class for facade and client can use different subclasses to talk to different subsystem implementations
+  * A facade is not replacement for regular usage of classes in subsystem. Those can be still used outside of facade. Your subsystem class implementations should not make assumptions of usage of facade by client code
+* Design Considerations
+  * Facade is a great solution to simplify dependencies. it allows you to have a weak coupling between subsystems
+  * If your only concern is coupling of client code to subsystem specific classes and not worries about simplification provided by a facade, then you can use abstract factory pattern in place of facade
