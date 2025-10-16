@@ -564,3 +564,11 @@ Structural patterns deal with how classes and objects are arranged or composed
 * Design Considerations
   * Facade is a great solution to simplify dependencies. it allows you to have a weak coupling between subsystems
   * If your only concern is coupling of client code to subsystem specific classes and not worries about simplification provided by a facade, then you can use abstract factory pattern in place of facade
+* Real-World Example:
+  * The java.net.URL class is a great example of facade. This class provides a simple method called as openStream() and we get an input stream to the resource pointed at by the URL object
+  * This class takes care of dealing with multiple classes from the java.net package as well as some internal sun packages
+  * UML: ![class-URL.png](assets%2Fclass-URL.png)
+* Pitfalls:
+  * Not a pitfall of the pattern itself, but needing a facade in a new design should warrant another look at API design
+  * It is often overused or misused pattern & can hide improperly designed API. A common misuse is to use them as "containers of related methods". So be on the lookout for such cases during code reviews
+
