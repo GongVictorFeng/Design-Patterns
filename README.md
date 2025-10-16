@@ -38,7 +38,7 @@
   * We should not modify the code which is written in the base class
 * Hands-on
   * There are many duplicated attributes between PhoneSubscriber and ISPSubscriber: 
-    * https://github.com/GongVictorFeng/Design-Patterns/commit/b4d840f9ae8c349b7c7b0b09f1812d56625e4bd2
+    * https://github.com/GongVictorFeng/Design-Patterns/commit/1ce13f55208db7ad2090c3aa7b6470ee6c4156e1
     * https://github.com/GongVictorFeng/Design-Patterns/commit/b4d840f9ae8c349b7c7b0b09f1812d56625e4bd2
   * Created a base class - Subscriber which is closed to modification, and method calculateBill is open for extension
     * https://github.com/GongVictorFeng/Design-Patterns/commit/0bb60b2b0a2b57d092a97a45754469518173e3ee
