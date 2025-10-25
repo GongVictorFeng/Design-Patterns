@@ -572,3 +572,35 @@ Structural patterns deal with how classes and objects are arranged or composed
   * Not a pitfall of the pattern itself, but needing a facade in a new design should warrant another look at API design
   * It is often overused or misused pattern & can hide improperly designed API. A common misuse is to use them as "containers of related methods". So be on the lookout for such cases during code reviews
 
+#### Proxy
+* We need to provide a placeholder or surrogate to another object.
+* Proxy acts on behalf of the object and is used for lots of reasons some of the main reasons are:
+  * Protection Proxy - Control access to original object's operations
+  * Remote Proxy - Provides a local representation of a remote object
+  * Virtual proxy - Delays construction of original object until absolutely necessary
+* Client is unaware of existence of proxy. Proxy performs its work transparently
+* Lazy loading of collections by hibernate, APO based method level security, RMI/Web service stubs are examples of real life proxy usage
+* UML: ![proxy.png](assets%2Fproxy.png)
+  * Subject - Defines interface used by client
+  * Real Subject - Provides real implementation of Subject
+  * Proxy - Implements the same interface as real subject & Maintains reference to real object for providing actual functionality
+* Implement a Static Proxy
+  * We start by implementing proxy
+    * Proxy must implement the same interface as the real subject
+    * We can either create actual object later when required or ask for one in constructor
+    * In method implementations of proxy, we implement proxy's functionality before delegating to the real object
+  * How to provide client with proxies instance is decided by application. We can provide a factory or compose client code with proxies instance
+  * What we are implementing above is also called as static proxy. Java also provides "dynamic proxies"
+* Hands-On
+  * UML: ![proxy-example.png](assets%2Fproxy-example.png)
+  * Created the interface used by the client: https://github.com/GongVictorFeng/Design-Patterns/commit/75b8aad647f90295ad4e2d81dace857d8adca730
+  * Created the real object: https://github.com/GongVictorFeng/Design-Patterns/commit/5b0048fd9f44a3ae452555a8a43f9b33d041b66b
+  * Created the proxy which implements the same interface as the real object: https://github.com/GongVictorFeng/Design-Patterns/commit/d2c8f14cbaff08d45de872332b0368f6052ff99a
+  * Created the factory to return the proxy to the client: https://github.com/GongVictorFeng/Design-Patterns/commit/8e4c32ae1d361845d2d614c4f5a668501a47d707
+  * Created the client and test case: https://github.com/GongVictorFeng/Design-Patterns/commit/e808b567b5a80fc8fd24f8be054201e40b94b5b9
+* Implement a Dynamic proxy
+  * We start by implementing java.lang.reflect.InvocationHandler
+    * Invocation handler implements invoke method which is called to handle every method invocation on proxy
+    * We need to take action as per the method invoked. We'll cache the Method instances on image interface so that we can compare them inside invoke method
+    * Our invocation handler will accept the same argument in constructor as needed by constructor of real object
+  * Actual proxy instance is created using java.lang.reflect.Proxy by client
