@@ -604,3 +604,11 @@ Structural patterns deal with how classes and objects are arranged or composed
     * We need to take action as per the method invoked. We'll cache the Method instances on image interface so that we can compare them inside invoke method
     * Our invocation handler will accept the same argument in constructor as needed by constructor of real object
   * Actual proxy instance is created using java.lang.reflect.Proxy by client
+* Implementation Considerations
+  * How proxy gets hold of the real object depends on what purpose proxy serves. For creation on demand type of proxies; actual object is created only when proxy cannot handle client request. Authentication proxies use pre-built objects so they are provided with object during construction of proxy
+  * Proxy itself can maintain/cache some state on behalf of real object in creation on demand use cases
+  * Pay attention to performance cost of proxies as well synchronization issues added by proxy itself
+* Design Considerations
+  * Proxies typically do not need to know about the actual concrete implementation of real object
+  * With Java, you can use dynamic proxy allowing you to create proxies for any object at runtime
+  * Proxies are great for implementing security or as stand-ins for real objects which may be a costly object that you want to defer loading. Proxies also make working with remote services/APIs easy by representing them as regular objects and possibly handling network communications behind the scene 
