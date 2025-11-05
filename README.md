@@ -604,6 +604,10 @@ Structural patterns deal with how classes and objects are arranged or composed
     * We need to take action as per the method invoked. We'll cache the Method instances on image interface so that we can compare them inside invoke method
     * Our invocation handler will accept the same argument in constructor as needed by constructor of real object
   * Actual proxy instance is created using java.lang.reflect.Proxy by client
+* Hands-On
+  * Created the ImageInvocationHandler implemented the InvocationHandle for the logic of the proxy: https://github.com/GongVictorFeng/Design-Patterns/commit/d5552a26e3551de282243d2a10d6777ca9e458b1
+  * Created the DynamicImageFactory to get the proxy at runtime:https://github.com/GongVictorFeng/Design-Patterns/commit/6dc6437f84e00d7e6ad3eff65a92c94e89f118ac
+  * Created the client and test case: https://github.com/GongVictorFeng/Design-Patterns/commit/8856f7ab1493c4a269abb34076652d81c587b930
 * Implementation Considerations
   * How proxy gets hold of the real object depends on what purpose proxy serves. For creation on demand type of proxies; actual object is created only when proxy cannot handle client request. Authentication proxies use pre-built objects so they are provided with object during construction of proxy
   * Proxy itself can maintain/cache some state on behalf of real object in creation on demand use cases
