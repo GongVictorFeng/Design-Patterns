@@ -625,3 +625,22 @@ Structural patterns deal with how classes and objects are arranged or composed
   * Java's dynamic proxy only works if your class is implementing one or more interfaces. Proxy is created by implementing these interfaces
   * If you need proxies for handling multiple responsibilities like auditing, authentication, as stand-in for the same instance, then it's better to have a single proxy to handle all these requirements. Due to the way some proxies create object on their own, it becomes quite difficult to manage them
   * Static proxies look quite similar to other patterns like decorator & adapter patterns. It can be confusing to figure it out from code alone for someone not familiar with all these patterns
+
+### Behavioral Patterns
+Behavioral patters describe how classes and objets interact & communicate with each other
+
+#### Chain of Responsibility
+* We need to avoid coupling the code which sends request to the code which handles that request
+* Typically, the code which wants some request handled calls the exact method on an exact object to process it, thus the tight coupling. Chain of responsibility solves this problem by giving more than one object, chance to process the request
+* We create objects which are chained together by one object knowing reference of object which is next in chain. We give request to first object in chain, if it can't handle that it simply passes the request down the chain
+* UML: ![chain-of-responsibility.png](assets%2Fchain-of-responsibility.png)
+  * Handler - Defines interface for handling requests & Implements link to successor (optional)
+  * Concrete Handler - Handles request if it can, if it can't handle it passes to successor
+  * Client - Hands over request to first object in chain
+* Implement Chain of responsibility
+  * We start by defining handler interface/abstract class
+    * Handler must define a method to accept incoming request
+    * Handler can define method to access successor in chain. If it's an abstract class then we can even maintain successor
+  * Next we implement handler in one or more concrete handlers. Concrete handler should check if it can handle the request. If not, then it should pass request to next handler 
+  * We have to create our chain of objects next. We can do it in client. Typically, in real world, this job will be done by some framework or initialization code written by you
+  * Client needs to know only the first object in chain. It'll pass on request to this object

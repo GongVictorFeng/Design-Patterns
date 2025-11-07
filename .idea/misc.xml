@@ -22,6 +22,7 @@
         <option value="$PROJECT_DIR$/composite/pom.xml" />
         <option value="$PROJECT_DIR$/facade/pom.xml" />
         <option value="$PROJECT_DIR$/proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/chain-of-responsibility/pom.xml" />
       </list>
     </option>
   </component>
