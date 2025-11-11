@@ -644,3 +644,27 @@ Behavioral patters describe how classes and objets interact & communicate with e
   * Next we implement handler in one or more concrete handlers. Concrete handler should check if it can handle the request. If not, then it should pass request to next handler 
   * We have to create our chain of objects next. We can do it in client. Typically, in real world, this job will be done by some framework or initialization code written by you
   * Client needs to know only the first object in chain. It'll pass on request to this object
+  * Hands-on:
+    * UML: ![chain-of-responsibility-example.png](assets%2Fchain-of-responsibility-example.png)
+    * Created the DTO - LeaveApplication: https://github.com/GongVictorFeng/Design-Patterns/commit/6212adaf9f8d78175ac8c9514111f05d8a0004ae
+    * Created the handler and abstract handler in the chain: https://github.com/GongVictorFeng/Design-Patterns/commit/e61e0cb8473abde4bba55262299b08bb30d17c3d
+    * Created the concrete handlers:
+      * https://github.com/GongVictorFeng/Design-Patterns/commit/5f29530fa66ce9dfcb40dc59139e42b20a51f545
+      * https://github.com/GongVictorFeng/Design-Patterns/commit/18fcde25760e07215a659eb91e9c52b4b109588f
+    * Created the client and test cases: https://github.com/GongVictorFeng/Design-Patterns/commit/a58af0d028ee3466ab831062879d43ebcaa33d7d
+  * Implementation Consideration
+    * Prefer defining handler as interface as it allows you to implement chain of responsibility without worrying about single inheritance rule of Java
+    * Handlers can allow the request to propagate even if they handle the request. Servlet filter chains allow request to flow to next filter even if they perform some action on request
+    * Chain can be described using XML or JSON as well so that you can add & remove handlers from chain without modifying code
+  * Design Considerations
+    * Sometimes you can think of using existing connections or chains in objects. For example, if you are using composite pattern you already have a chain which can be used to implement this behavior
+  * Real-world-example
+    * Probably the best example is servlet filters. Each filter gets a chance to handle incoming request and passes it down the chain once its work is done
+    * All servlet filters implement the javax.servlet.Filter interface which defines following doFilter method
+      * `public void doFilter(ServletRequest request, ServletResponse response, FilterCahin chain)`
+    * Implementations will use `FilterChain` object to pass request to next handler in chain
+      * i.e.chain.doFilter(request, response);
+    * In servlet filters, it's common practice to allow other filters to handle request even if current filter takes some action on the request
+  * Pitfalls
+    * There is no guarantee provided in the pattern that a request will be handled. Request can traverse whole chain and fall off ath the other end without ever being processed, and we won't know it
+    * It is easy to mis-configure the chain when we are connecting successors. There is nothing in the pattern that will let us know of any such problems. Some handlers may be left unconnected to chain
